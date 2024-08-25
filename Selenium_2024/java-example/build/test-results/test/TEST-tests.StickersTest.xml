@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.StickersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-25T18:11:44" hostname="DESKTOP-CMOQP1A" time="4.892">
+  <properties/>
+  <testcase name="allStickersTest()" classname="tests.StickersTest" time="4.892"/>
+  <system-out><![CDATA[The product has only 1 sticker
+The product doesn't have stickers
+The product doesn't have stickers
+The product doesn't have stickers
+The product doesn't have stickers
+The product has only 1 sticker
+The product has only 1 sticker
+The product doesn't have stickers
+The product doesn't have stickers
+The product doesn't have stickers
+The product doesn't have stickers
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

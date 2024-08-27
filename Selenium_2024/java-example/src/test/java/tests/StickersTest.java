@@ -29,7 +29,7 @@ public class StickersTest {
     @Test
     public void allStickersTest() {
         driver.get("http://localhost/litecart/en/");
-        var allProducts = driver.findElements(By.cssSelector("li.product.column"));
+        var allProducts = driver.findElements(By.cssSelector("li.product"));
         for (var oneProduct : allProducts) {
             var allStickers = oneProduct.findElements(By.cssSelector("div.sticker"));
             if (allStickers.size() == 1) {

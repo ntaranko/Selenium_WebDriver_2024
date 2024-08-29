@@ -6,46 +6,23 @@ import org.openqa.selenium.By;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountriesGeoZonesSorting extends TestBase {
+public class GeoZonesSorting extends TestBase {
     @Test
-    public void countriesSorted() {
-        //app.driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
-        app.adminHelper().clickMenu(By.xpath("//*[contains(text(),'Countries')]"));
-
-        var rowsList = app.driver.findElements(By.cssSelector("tr.row"));
-
-        List<String> countriesList = new ArrayList<>();
-        for (var row : rowsList) {
-            var column = row.findElements(By.cssSelector("tr.row a[href]")).get(0).getText();
-            countriesList.add(column);
-        }
-
-        for (int i = 0; i < countriesList.size() - 1; i++) {
-            if (countriesList.get(i).compareTo(countriesList.get(i + 1)) > 0) {
-                System.out.println("Country list is not sorted " + i);
-                break;
+    public void geozonesSorted() {
+        app.adminHelper().select(By.xpath("//*[contains(text(),'Geo Zones')]"));
+        var countriesList = app.driver.findElements(By.cssSelector("tr.row"));
+        for (int i = 0; i < countriesList.size(); i++) {
+            String selector = String.format("a[href$=\"geo_zone_id=%s\"]", i + 1);
+            app.adminHelper().select(By.cssSelector(selector));
+            var rowsList = app.driver.findElements(By.cssSelector("table.dataTable tr:not(.header)"));
+            List<String> zoneList = new ArrayList<>();
+            for (int j = 1; j < rowsList.size() - 1; j++) {
+                var zone = rowsList.get(j).findElements(By.cssSelector("[name$=\"zone_code]\"] option[selected]")).get(0).getText();
+                zoneList.add(zone);}
+            if (!app.adminHelper().isListSorted(zoneList)) {
+                System.out.println("Zone list is not sorted");
             }
-        }
-    }
-
-    @Test
-    public void geoZonesSorted() {
-        app.adminHelper().clickMenu(By.xpath("//*[contains(text(),'Countries')]"));
-
-        var rowsList = app.driver.findElements(By.cssSelector("tr.row"));
-        List<String> countriesList = new ArrayList<>();
-        for (var row : rowsList) {
-            var column = row.findElements(By.cssSelector("tr.row td")).get(5).getText();
-            int zonesNumber = Integer.valueOf(column);
-            if (zonesNumber > 0) {
-                app.adminHelper().clickMenu(By.cssSelector("tr.row a[href]"));
-
-                var table = app.driver.findElement(By.cssSelector("table.dataTable"));
-                var zonesList = table.findElements(By.cssSelector("input[name$=\"][name]\"]"));
-                //var zonesList = app.driver.findElements(By.cssSelector("input[name$=\"][name]\"]"));
-                // var zonesList = app.driver.findElements(By.xpath("//*[contains(@name,'][name]')]"));
-                System.out.println("zoneList size = " + zonesList.size());
-            }
+            app.adminHelper().select(By.cssSelector("button[name=cancel]"));
         }
     }
 }

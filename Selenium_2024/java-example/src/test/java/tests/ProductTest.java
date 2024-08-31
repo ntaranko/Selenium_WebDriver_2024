@@ -24,7 +24,7 @@ public class ProductTest {
     }
 
     @Test
-    public void newName() {
+    public void correctProductPage() {
         driver.get("http://localhost/litecart/en/");
 
         var product = driver.findElement(By.cssSelector("div#box-campaigns li.product"));

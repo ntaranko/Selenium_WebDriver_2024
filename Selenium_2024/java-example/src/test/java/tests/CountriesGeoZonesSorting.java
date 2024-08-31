@@ -37,7 +37,7 @@ public class CountriesGeoZonesSorting extends TestBase {
 
                 List<String> zonesNamesList = new ArrayList<>();
                 for (int j = 0; j < zonesList.size() - 1; j++) {
-                    var zoneName = zonesList.get(j).findElements(By.cssSelector("[name$=\"][name]\"]")).get(0).getAttribute("value");
+                    var zoneName = zonesList.get(j).findElements(By.cssSelector("table.dataTable tr td")).get(2).getText();
                     zonesNamesList.add(zoneName);
                 }
                 if (! app.adminHelper().isListSorted(zonesNamesList)) {

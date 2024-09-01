@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -33,13 +34,13 @@ public class ProductTest {
         int promotionalPrice = Integer.valueOf(product.findElement(By.cssSelector("strong.campaign-price")).getText().substring(1));
 
         //Get css properties of product's regular price
-        var regularPriceColor = product.findElement(By.cssSelector("s.regular-price")).getCssValue("color");
+        Color regularPriceColor = Color.fromString(product.findElement(By.cssSelector("s.regular-price")).getCssValue("color"));
         var regularPriceFontSize = product.findElement(By.cssSelector("s.regular-price")).getCssValue("font-size");
         var regularPriceFontSizeNumber = Double.valueOf(regularPriceFontSize.substring(0, regularPriceFontSize.length() - 2));
         var regularPriceTextDecoration = product.findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration");
 
         //Get css properties of product's promotional price
-        var promotionalPriceColor = product.findElement(By.cssSelector("strong.campaign-price")).getCssValue("color");
+        Color promotionalPriceColor = Color.fromString(product.findElement(By.cssSelector("strong.campaign-price")).getCssValue("color"));
         var promotionalPriceFontSize = product.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-size");
         var promotionalPriceFontSizeNumber = Double.valueOf(promotionalPriceFontSize.substring(0, promotionalPriceFontSize.length() - 2));
         var promotionalPriceFontWeight = product.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight");
@@ -50,13 +51,13 @@ public class ProductTest {
         int promotionalPricePage = Integer.valueOf(driver.findElement(By.cssSelector("strong.campaign-price")).getText().substring(1));
 
         //Get css properties of regular price on product page
-        var regularPricePageColor = driver.findElement(By.cssSelector("s.regular-price")).getCssValue("Color");
+        Color regularPricePageColor = Color.fromString(driver.findElement(By.cssSelector("s.regular-price")).getCssValue("Color"));
         var regularPricePageFontSize = driver.findElement(By.cssSelector("s.regular-price")).getCssValue("font-size");
         var regularPricePageFontSizeNumber = Double.valueOf(regularPricePageFontSize.substring(0, regularPricePageFontSize.length() - 2));
         var regularPricePageTextDecoration = driver.findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration");
 
         //Get css properties of promotional price on product page
-        var promotionalPricePageColor = driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("Color");
+        Color promotionalPricePageColor = Color.fromString(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("Color"));
         var promotionalPricePageFontSize = driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-size");
         var promotionalPricePageFontSizeNumber = Double.valueOf(promotionalPricePageFontSize.substring(0, promotionalPricePageFontSize.length() - 2));
         var promotionalPricePageFontWeight = driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight");
@@ -75,17 +76,17 @@ public class ProductTest {
         }
 
         //3
-        var rColor = regularPriceColor.substring(5, 8);
-        var gColor = regularPriceColor.substring(10, 13);
-        var bColor = regularPriceColor.substring(15, 18);
-        if (rColor.equals(gColor) && rColor.equals(bColor)) {
+        var rColor = regularPriceColor.getColor().getRed();
+        var gColor = regularPriceColor.getColor().getGreen();
+        var bColor = regularPriceColor.getColor().getBlue();
+        if (rColor == gColor && rColor == bColor) {
             System.out.println("Regular price color is grey");
         }
 
-        rColor = regularPricePageColor.substring(4, 7);
-        gColor = regularPricePageColor.substring(9, 12);
-        bColor = regularPricePageColor.substring(14, 17);
-        if (rColor.equals(gColor) && rColor.equals(bColor)) {
+        rColor = regularPricePageColor.getColor().getRed();
+        gColor = regularPricePageColor.getColor().getGreen();
+        bColor = regularPricePageColor.getColor().getBlue();
+        if (rColor == gColor && rColor == bColor) {
             System.out.println("Regular price color on product page is grey");
         }
 
@@ -98,15 +99,15 @@ public class ProductTest {
         }
 
         //4
-        gColor = promotionalPriceColor.substring(10, 11);
-        bColor = promotionalPriceColor.substring(13, 14);
-        if (gColor.equals("0") && bColor.equals("0")) {
+        gColor = promotionalPriceColor.getColor().getGreen();
+        bColor = promotionalPriceColor.getColor().getBlue();
+        if (gColor == 0 && bColor == 0) {
             System.out.println("Promotional price color is red");
         }
 
-        gColor = promotionalPricePageColor.substring(9, 10);
-        bColor = promotionalPricePageColor.substring(12, 13);
-        if (gColor.equals("0") && bColor.equals("0")) {
+        gColor = promotionalPricePageColor.getColor().getGreen();
+        bColor = promotionalPricePageColor.getColor().getBlue();
+        if (gColor == 0 && bColor == 0) {
             System.out.println("Promotional price color on product page is red");
         }
 

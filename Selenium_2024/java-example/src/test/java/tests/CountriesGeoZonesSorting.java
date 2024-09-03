@@ -9,7 +9,7 @@ import java.util.List;
 public class CountriesGeoZonesSorting extends TestBase {
     @Test
     public void countriesSorted() {
-        app.adminHelper().select(By.xpath("//*[contains(text(),'Countries')]"));
+        app.adminHelper().selectElement(By.xpath("//*[contains(text(),'Countries')]"));
         var countryList = app.driver.findElements(By.cssSelector("tr.row"));
 
         List<String> countryNamesList = new ArrayList<>();
@@ -25,7 +25,7 @@ public class CountriesGeoZonesSorting extends TestBase {
 
     @Test
     public void geoZonesSorted() {
-        app.adminHelper().select(By.xpath("//*[contains(text(),'Countries')]"));
+        app.adminHelper().selectElement(By.xpath("//*[contains(text(),'Countries')]"));
         var countryList = app.driver.findElements(By.cssSelector("tr.row"));
 
         for (int i = 0; i < countryList.size(); i++) {
@@ -44,7 +44,7 @@ public class CountriesGeoZonesSorting extends TestBase {
                     System.out.println("Zone list is not sorted");
                 }
 
-                app.adminHelper().select(By.cssSelector("button[name=cancel]"));
+                app.adminHelper().selectElement(By.cssSelector("button[name=cancel]"));
                 countryList = app.driver.findElements(By.cssSelector("tr.row"));
             }
         }

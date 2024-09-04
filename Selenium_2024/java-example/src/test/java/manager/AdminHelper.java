@@ -3,6 +3,7 @@ package manager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
+import java.nio.file.Paths;
 import java.util.List;
 
 public class AdminHelper extends HelperBase {
@@ -10,8 +11,12 @@ public class AdminHelper extends HelperBase {
         super(manager);
     }
 
-    public void select(By locator) {
+    public void selectElement(By locator) {
         click(locator);
+    }
+
+    public void fillField(By locator, String text) {
+        type(locator, text);
     }
 
     public boolean isElementPresent(By locator) {
@@ -30,6 +35,10 @@ public class AdminHelper extends HelperBase {
             }
         }
         return true;
+    }
+
+    public void attach(By locator, String file) {
+        manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
     }
 }
 

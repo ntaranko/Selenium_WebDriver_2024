@@ -1,8 +1,6 @@
 package manager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -41,15 +39,5 @@ public class ApplicationManager {
             session = new LoginHelper(this);
         }
         return session;
-    }
-
-
-    protected boolean isElementPresent(By locator) {
-        try {
-            driver.findElement(locator);
-            return true;
-        } catch (NoSuchElementException exception) {
-            return false;
-        }
     }
 }

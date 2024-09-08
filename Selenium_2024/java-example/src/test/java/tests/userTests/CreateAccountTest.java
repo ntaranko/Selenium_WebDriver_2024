@@ -1,4 +1,4 @@
-package tests;
+package tests.userTests;
 
 import common.CommonFunctions;
 import org.junit.jupiter.api.AfterEach;

@@ -24,6 +24,4 @@ public class HelperBase {
     protected void attach(By locator, String file) {
         manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
     }
-
-
 }

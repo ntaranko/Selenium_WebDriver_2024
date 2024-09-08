@@ -1,7 +1,8 @@
-package tests;
+package tests.adminTests;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import tests.TestBase;
 
 public class AdminMenuTest extends TestBase {
 

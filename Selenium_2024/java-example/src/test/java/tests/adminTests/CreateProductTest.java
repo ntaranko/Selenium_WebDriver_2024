@@ -1,9 +1,10 @@
-package tests;
+package tests.adminTests;
 
 import common.CommonFunctions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
+import tests.TestBase;
 
 public class CreateProductTest extends TestBase {
 

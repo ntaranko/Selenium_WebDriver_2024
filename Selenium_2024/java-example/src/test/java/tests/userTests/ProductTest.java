@@ -1,4 +1,4 @@
-package tests;
+package tests.userTests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,6 @@ import java.time.Duration;
 
 public class ProductTest {
     private WebDriver driver;
-
     private WebDriverWait wait;
 
     @BeforeEach
